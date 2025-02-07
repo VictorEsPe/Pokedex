@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from '../button/Button';
+import { Button } from '../button';
 
 const PokedexContainer = styled.section`
   display: flex;
@@ -16,7 +16,7 @@ const PokemonCardContainer = styled.div`
   justify-content: center;
   font-family:'VT323', sans-serif;
 
-  & > .pokemon-card {
+  & .pokemon-card {
     display: flex;
     flex-direction: column;
     width: 250px;
@@ -54,8 +54,8 @@ const LoadMoreBtn = styled(Button)`
   margin-top: 30px;
   
   &:hover {
-    background-color: #f00909ce;
-    box-shadow: inset 2px 2px 5px rgba(2, 2, 2, 0.842);
+    background-color: #dd0000;
+    box-shadow: inset 4px 4px 5px rgba(2, 2, 2, 0.842);
   }
   `
 

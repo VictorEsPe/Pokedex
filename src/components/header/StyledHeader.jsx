@@ -1,4 +1,4 @@
-import { Button } from '../button/Button';
+import { Button } from '../button';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -19,8 +19,13 @@ const Logo = styled.div`
   gap: 5px;
 
   & img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
+  }
+
+  & h1 {
+    font-family: 'VT323', sans-serif;
+    font-size: 40px;
   }
 `;
 

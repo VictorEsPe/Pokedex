@@ -1,20 +1,20 @@
-const getPokemons = async (id = null) => {
+const getPokemonsList = async () => {
   const pokemonList = [];
 
   try {
     for (let i = 0; i < 10; i++) {
-      const pokemonId = id ?? Math.floor(Math.random() * 1000) + 1;
-    
+      const pokemonId = Math.floor(Math.random() * 1000) + 1;
+      
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
       );
       const data = await response.json();
       
-
-      pokemonList.push(data);
+      pokemonList.push(data);  
     }
+
   } catch (error) {
-    
+    // TODO: desenvolver tratamento de erro 
     console.log(error);
     
   }
@@ -22,4 +22,18 @@ const getPokemons = async (id = null) => {
   return pokemonList;
 };
 
-export { getPokemons };
+const getPokemon = async (id) => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${id}`
+    );
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    // TODO: desenvolver tratamento de erro 
+    console.log(error);
+  }
+};
+
+export { getPokemonsList, getPokemon };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { getPokemons } from '../../services/getPokemons';
+import { getPokemonsList } from '../../services/getPokemons';
 import { PokedexContainer, PokemonCardContainer, LoadMoreBtn } from './StyledPokemonCard';
+import { Link } from 'react-router-dom';
 
 const PokemonCard = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -8,7 +9,7 @@ const PokemonCard = () => {
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      const response = await getPokemons();
+      const response = await getPokemonsList();
       setPokemonList(pokemonList.concat(response));     
     };
 
@@ -22,11 +23,13 @@ const PokemonCard = () => {
 
       <PokemonCardContainer>
         {pokemonList.map(pokemon => (
-          <div key={pokemon.id} className="pokemon-card">
-            <div className="pokemon-img-frame"><img src={pokemon.sprites.front_default} alt={pokemon.name} /></div>
-            <p>N° {pokemon.id}</p>
-            <h2>{pokemon.name}</h2>
-          </div>
+          <Link to={`/pokemon/${pokemon.id}`} key={pokemon.id}>
+            <div  className="pokemon-card">
+              <div className="pokemon-img-frame"><img src={pokemon.sprites.front_default} alt={pokemon.name} /></div>
+              <p>N° {pokemon.id}</p>
+              <h2>{pokemon.name}</h2>
+            </div>
+          </Link>
         ))}
       </PokemonCardContainer>
 

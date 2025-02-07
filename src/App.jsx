@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Header } from './components/header/Header';
-import { PokemonCard } from './components/pokemonCard/PokemonCard';
+import { Header } from './components/header/'
+import { AppRoutes } from './pages/routes';
 import { createGlobalStyle } from 'styled-components';
 
 function App() {
@@ -8,18 +8,18 @@ function App() {
   const [headerHeight, setHeaderHeight] = useState(0);
 
   useEffect(() => {
-    if(headerHeightRef.current){
+    if (headerHeightRef.current) {
       const height = headerHeightRef.current.getBoundingClientRect().height;
 
-      setHeaderHeight(height)
+      setHeaderHeight(height);
     }
-  }, [])
+  }, []);
 
   return (
     <>
-      <GlobalStyles marginTop={headerHeight}/>
-      <Header componentRef={headerHeightRef}/>
-      <PokemonCard />
+      <GlobalStyles marginTop={headerHeight} />
+      <Header componentRef={headerHeightRef} />
+      <AppRoutes />
     </>
   );
 }
@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
     padding-top: ${props => props.marginTop}px;
   }
 
-`
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
 
 export default App;

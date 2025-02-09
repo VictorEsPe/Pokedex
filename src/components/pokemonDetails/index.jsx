@@ -1,11 +1,17 @@
 import { getPokemon } from '../../services/getPokemons';
-import { getMovesDescription } from '../../services/getMovesDescription';
-import { useParams } from 'react-router-dom';
+import { getAbilitiesDescription } from '../../services/getAbilitiesDescription';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import {
+  Container,
+  StyledLink,
+  StyledPokemonDescription,
+  TypeItem,
+} from './StyledPokeonDetails';
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState(null);
-  const [moveDescriptionList, setMoveDescriptionList] = useState([]);
+  const [abilityDescriptionList, setAbilityDescriptionList] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -18,72 +24,79 @@ const PokemonDetails = () => {
   }, []);
 
   useEffect(() => {
-    const fetchMoves = async () => {
+    const fetchAbilities = async () => {
       if (!pokemon) return;
 
-      const moveNameListLength = pokemon.moves.length;
-      const moveList = [];
+      const abilityNameListLength = pokemon.abilities.length;
+      const abilityList = [];
 
-      for (let i = 0; i < moveNameListLength; i++) {
-        const moveUrl = pokemon.moves[i].move.url;
+      for (let i = 0; i < abilityNameListLength; i++) {
+        const abilityUrl = pokemon.abilities[i].ability.url;
 
         try {
-          const response = await getMovesDescription(moveUrl);
-
-          moveList.push(response.effect_entries[0].effect);
+          const response = await getAbilitiesDescription(abilityUrl);
+          // garante que a descrição venha em inglês
+          const englishDescription = response.effect_entries.find(
+            entry => entry.language.name === 'en'
+          );
+          abilityList.push(englishDescription.effect);
         } catch (error) {
-          moveList.push('Erro ao carregar descrição.');
+          abilityList.push('Erro ao carregar descrição.');
         }
       }
 
-      setMoveDescriptionList(moveList);
+      setAbilityDescriptionList(abilityList);
     };
 
-    fetchMoves();
+    fetchAbilities();
   }, [pokemon]);
 
-  if (!pokemon || moveDescriptionList.length === 0) return <p>Carregando...</p>;
+  if (!pokemon || abilityDescriptionList.length === 0)
+    return <p>Carregando...</p>;
 
   return (
-    <div>
-      <div className="pokemon-img-frame">
-        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      </div>
+    <Container>
+      <StyledLink to="/">Voltar</StyledLink>
 
-      <p>N° {pokemon.id}</p>
-      <h2>{pokemon.name}</h2>
+      <StyledPokemonDescription>
+        <div className="pokemon-img-frame">
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        </div>
 
-      <ul className="type-list">
-        {pokemon.types.map((typeObj, index) => (
-          <li key={index} className={typeObj.type.name}>
-            {typeObj.type.name}
-          </li>
-        ))}
-      </ul>
+        <div className="pokemon-name">
+          <h2>{pokemon.name}</h2>
+          <p>N° {pokemon.id}</p>
+        </div>
 
-      <div className="ability-list">
-        <h2>Habilidades</h2>
-
-        <ul>
-          {pokemon.abilities.map((abilityObj, index) => (
-            <li key={index}>{abilityObj.ability.name}</li>
+        <ul className="type-list">
+          {pokemon.types.map((typeObj, index) => (
+            <TypeItem key={index} className={typeObj.type.name}>
+              {typeObj.type.name}
+            </TypeItem>
           ))}
         </ul>
-      </div>
 
-      <div className="move-list">
-        <h2>Movimentos</h2>
-
-        <ul>
-          {pokemon.moves.map((moveObj, index) => (
-            <li key={index}>
-              <h3>{moveObj.move.name}:</h3>
-              <p>{moveDescriptionList[index]}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+        <div className="ability-list">
+          <h2>Abilities</h2>
+          <ul>
+            {pokemon.abilities.map((abilityObj, index) => (
+              <li key={index}>
+                <span className='ability'>{abilityObj.ability.name}: </span>
+                {abilityDescriptionList[index]}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="move-list">
+          <h2>Moves</h2>
+          <ul>
+            {pokemon.moves.map((moveObj, index) => (
+              <li key={index}>{moveObj.move.name}</li>
+            ))}
+          </ul>
+        </div>
+      </StyledPokemonDescription>
+    </Container>
   );
 };
 

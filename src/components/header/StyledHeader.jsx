@@ -9,8 +9,9 @@ const StyledHeader = styled.header`
   position: absolute;
   top: 0;
   width: 100%;
-  box-shadow: 0 1px 10px lightgray;
-  background-color: #fff;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.361);
+  background-color: ${props => props.theme.bgColor};
+  color: ${props => props.theme.textColor};
 `;
 
 const Logo = styled.div`
@@ -32,10 +33,11 @@ const Logo = styled.div`
 const ThemeTogglerBtn = styled(Button)`
   font-size: 25px;
   transition: all 0.2s ease-in-out;
+  color: inherit;
 
   &:hover {
     transform: scale(1.12);
-    opacity: .6;
+    opacity: 0.6;
   }
 `;
 

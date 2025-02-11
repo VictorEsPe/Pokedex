@@ -1,18 +1,16 @@
+import React, { useContext } from 'react';
+import { ThemeContext, themes } from '../../contexts/theme-context';
 import { getPokemon } from '../../services/getPokemons';
 import { getAbilitiesDescription } from '../../services/getAbilitiesDescription';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import {
-  Container,
-  StyledLink,
-  StyledPokemonDescription,
-  TypeItem,
-} from './StyledPokeonDetails';
+import { Container, StyledLink, StyledPokemonDescription, TypeItem } from './StyledPokemonDetails';
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState(null);
   const [abilityDescriptionList, setAbilityDescriptionList] = useState([]);
   const { id } = useParams();
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -55,8 +53,8 @@ const PokemonDetails = () => {
     return <p>Carregando...</p>;
 
   return (
-    <Container>
-      <StyledLink to="/">Voltar</StyledLink>
+    <Container theme={theme}>
+      <StyledLink to="/" theme={theme}>Voltar</StyledLink>
 
       <StyledPokemonDescription>
         <div className="pokemon-img-frame">

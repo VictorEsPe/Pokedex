@@ -1,9 +1,12 @@
-import { StyledButton } from "./StyledButton";
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme-context';
+import { StyledButton } from './StyledButton';
 
-const Button = ({children, onClick, className}) => {
+const Button = (props) => {
+
   return (
-    <StyledButton onClick={onClick} className={className}>{children}</StyledButton>  
+    <StyledButton {...props} />
   );
-}
+};
 
 export { Button };

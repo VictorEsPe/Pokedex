@@ -7,6 +7,8 @@ const PokedexContainer = styled.section`
   align-items: center;
   flex-direction: column;
   padding: 20px 80px ;
+  background-color: ${props => props.theme.bgColor};
+  color: ${props => props.theme.textColor};
 `;
 
 const PokemonCardContainer = styled.div`
@@ -35,7 +37,7 @@ const PokemonCardContainer = styled.div`
     }
 
     & .pokemon-img-frame {
-      background-color: #5fff6d21;
+      background-color: #79ff848f;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -48,13 +50,13 @@ const LoadMoreBtn = styled(Button)`
   box-shadow: 2px 2px 7px rgba(2, 2, 2, 0.514);
   font-size: 18px;
   border-radius: 10px;
-  background-color: #ff0000e2;
-  color: #fff;
+  background-color: ${props => props.theme.button.bgColor};
+  color: #e0e0e0;
   transition: all .2s ease-in-out;
   margin-top: 30px;
   
   &:hover {
-    background-color: #dd0000;
+    background-color: ${props => props.theme.button.hover};;
     box-shadow: inset 4px 4px 5px rgba(2, 2, 2, 0.842);
   }
   `

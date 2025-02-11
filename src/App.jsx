@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Header } from './components/header/'
 import { AppRoutes } from './pages/routes';
 import { createGlobalStyle } from 'styled-components';
+import {ThemeProvider} from './contexts/theme-context';
 
 function App() {
   const headerHeightRef = useRef(null);
@@ -16,11 +17,11 @@ function App() {
   }, []);
 
   return (
-    <>
+    <ThemeProvider>
       <GlobalStyles marginTop={headerHeight} />
       <Header componentRef={headerHeightRef} />
       <AppRoutes />
-    </>
+    </ThemeProvider>
   );
 }
 

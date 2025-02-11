@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { ThemeContext } from '../../contexts/theme-context';
 import { getPokemonsList } from '../../services/getPokemons';
 import { PokedexContainer, PokemonCardContainer, LoadMoreBtn } from './StyledPokemonCard';
 import { Link } from 'react-router-dom';
@@ -6,6 +7,8 @@ import { Link } from 'react-router-dom';
 const PokemonCard = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [buttonClick, setButtonClick] = useState(false);
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -18,7 +21,7 @@ const PokemonCard = () => {
   }, [buttonClick]);
 
   return (
-    <PokedexContainer>
+    <PokedexContainer theme={theme}>
       {pokemonList.length === 0 && <p className="loading-message">Carregando pokemons...</p>}
 
       <PokemonCardContainer>
@@ -38,6 +41,7 @@ const PokemonCard = () => {
         pokemonList.length === 20 && alert('Limite de busca atingido');
         }} pokemonListLength={pokemonList.length}
         className="load-more-btn"
+        theme={theme}
         >Mostrar mais</LoadMoreBtn>
     </PokedexContainer>
   );

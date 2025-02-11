@@ -8,20 +8,23 @@ const Container = styled.section`
   width: 100%;
   flex-direction: column;
   padding: 20px;
+  background-color: ${props => props.theme.bgColor};
+  color: ${props => props.theme.textColor};
 `;
 
 const StyledLink = styled(Link)`
   padding: 15px;
-  box-shadow: 2px 2px 7px rgba(2, 2, 2, 0.514);
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.361);
   font-size: 18px;
   border-radius: 10px;
-  background-color: #ff0000e2;
-  color: #fff;
+  
+  background-color: ${props => props.theme.button.bgColor};
+  color: #e0e0e0;
   transition: all 0.2s ease-in-out;
   align-self: flex-start;
 
   &:hover {
-    background-color: #dd0000;
+    background-color: ${props => props.theme.button.hover};
     box-shadow: inset 4px 4px 5px rgba(2, 2, 2, 0.842);
   }
 `;
@@ -39,7 +42,7 @@ const StyledPokemonDescription = styled.div`
   font-family: 'IBM Plex Mono', sans-serif;
 
   & .pokemon-img-frame {
-    background-color: #5fff6d21;
+    background-color: #79ff848f;
     width: 100%;
     display: flex;
     justify-content: center;

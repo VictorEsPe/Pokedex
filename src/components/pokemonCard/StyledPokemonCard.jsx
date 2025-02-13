@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { Button } from '../button';
 
+const ErrorMessageParagraph = styled.p`
+  color: ${props => props.theme.textColor};
+  text-align: center;
+  margin-top: 30px;
+`
+
 const PokedexContainer = styled.section`
   display: flex;
   justify-content: center;
@@ -17,6 +23,7 @@ const PokemonCardContainer = styled.div`
   gap: 30px;
   justify-content: center;
   font-family:'VT323', sans-serif;
+  margin-bottom: 30px;
 
   & .pokemon-card {
     display: flex;
@@ -46,14 +53,17 @@ const PokemonCardContainer = styled.div`
 `
 
 const LoadMoreBtn = styled(Button)`
-  padding: 15px;
+  padding: 15px 40px;
   box-shadow: 2px 2px 7px rgba(2, 2, 2, 0.514);
   font-size: 18px;
   border-radius: 10px;
   background-color: ${props => props.theme.button.bgColor};
   color: #e0e0e0;
   transition: all .2s ease-in-out;
-  margin-top: 30px;
+
+  @media(max-width: 600px) {
+    width: 100%;
+  }
   
   &:hover {
     background-color: ${props => props.theme.button.hover};;
@@ -61,4 +71,4 @@ const LoadMoreBtn = styled(Button)`
   }
   `
 
-export { PokedexContainer, PokemonCardContainer, LoadMoreBtn };
+export { ErrorMessageParagraph, PokedexContainer, PokemonCardContainer, LoadMoreBtn };

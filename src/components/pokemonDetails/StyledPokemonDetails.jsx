@@ -1,32 +1,22 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const LoadingMessage = styled.div`
+  text-align: center;
+  padding: 50px;
+  color: ${props => props.theme.textColor};
+`
+
 const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   flex-direction: column;
-  padding: 20px;
+  gap: 18px;
+  padding: 30px;
   background-color: ${props => props.theme.bgColor};
   color: ${props => props.theme.textColor};
-`;
-
-const StyledLink = styled(Link)`
-  padding: 15px;
-  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.361);
-  font-size: 18px;
-  border-radius: 10px;
-  
-  background-color: ${props => props.theme.button.bgColor};
-  color: #e0e0e0;
-  transition: all 0.2s ease-in-out;
-  align-self: flex-start;
-
-  &:hover {
-    background-color: ${props => props.theme.button.hover};
-    box-shadow: inset 4px 4px 5px rgba(2, 2, 2, 0.842);
-  }
 `;
 
 const StyledPokemonDescription = styled.div`
@@ -40,6 +30,10 @@ const StyledPokemonDescription = styled.div`
   box-shadow: 5px 5px 10px rgba(2, 2, 2, 0.25);
   border: 1px solid lightgray;
   font-family: 'IBM Plex Mono', sans-serif;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
   & .pokemon-img-frame {
     background-color: #79ff848f;
@@ -88,6 +82,10 @@ const StyledPokemonDescription = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
 
     & li {
       border-radius: 10px;
@@ -144,9 +142,14 @@ const TypeItem = styled.li`
       case 'fairy':
         return '#EE99AC';
       default:
-        return '#A8A878'; // Normal type or fallback
+        return '#A8A878'; 
     }
   }};
 `;
 
-export { Container, StyledLink, StyledPokemonDescription, TypeItem };
+const StyledLink = styled(Link)`
+text-align: center;
+width: 100%;
+`;
+
+export { LoadingMessage, Container, StyledPokemonDescription, TypeItem, StyledLink };

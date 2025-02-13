@@ -1,10 +1,17 @@
 import React, { useContext } from 'react';
-import { ThemeContext, themes } from '../../contexts/theme-context';
+import { ThemeContext } from '../../contexts/theme-context';
 import { getPokemon } from '../../services/getPokemons';
 import { getAbilitiesDescription } from '../../services/getAbilitiesDescription';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Container, StyledLink, StyledPokemonDescription, TypeItem } from './StyledPokemonDetails';
+import {
+  LoadingMessage,
+  Container,
+  StyledPokemonDescription,
+  TypeItem,
+  StyledLink,
+} from './StyledPokemonDetails';
+import { LoadMoreBtn } from '../pokemonCard/StyledPokemonCard';
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState(null);
@@ -50,11 +57,19 @@ const PokemonDetails = () => {
   }, [pokemon]);
 
   if (!pokemon || abilityDescriptionList.length === 0)
-    return <p>Carregando...</p>;
+    return (
+      <LoadingMessage theme={theme}>
+        <p className="loading-message">Carregando Pokemon...</p>
+      </LoadingMessage>
+    );
 
   return (
     <Container theme={theme}>
-      <StyledLink to="/" theme={theme}>Voltar</StyledLink>
+      <StyledLink to="/">
+        <LoadMoreBtn theme={theme} className="link-btn">
+          Voltar
+        </LoadMoreBtn>
+      </StyledLink>
 
       <StyledPokemonDescription>
         <div className="pokemon-img-frame">
@@ -79,7 +94,7 @@ const PokemonDetails = () => {
           <ul>
             {pokemon.abilities.map((abilityObj, index) => (
               <li key={index}>
-                <span className='ability'>{abilityObj.ability.name}: </span>
+                <span className="ability">{abilityObj.ability.name}: </span>
                 {abilityDescriptionList[index]}
               </li>
             ))}

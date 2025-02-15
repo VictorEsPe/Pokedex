@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { LoadMoreBtn } from '../pokemonCard/StyledPokemonCard';
 
 const FallbackMessage = styled.p`
   text-align: center;
-  padding: 50px;
+  padding: 30px;
   color: ${props => props.theme.textColor};
-`
+`;
+const GoBackBtn = styled(LoadMoreBtn)`
+  margin-top: 30px;
+  align-self: center;
+`;
 
 const Container = styled.section`
   display: flex;
@@ -14,7 +19,6 @@ const Container = styled.section`
   width: 100%;
   flex-direction: column;
   gap: 18px;
-  padding: 30px;
   background-color: ${props => props.theme.bgColor};
   color: ${props => props.theme.textColor};
 `;
@@ -142,14 +146,21 @@ const TypeItem = styled.li`
       case 'fairy':
         return '#EE99AC';
       default:
-        return '#A8A878'; 
+        return '#A8A878';
     }
   }};
 `;
 
 const StyledLink = styled(Link)`
-text-align: center;
-width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
-export { FallbackMessage, Container, StyledPokemonDescription, TypeItem, StyledLink };
+export {
+  FallbackMessage,
+  GoBackBtn,
+  Container,
+  StyledPokemonDescription,
+  TypeItem,
+  StyledLink,
+};

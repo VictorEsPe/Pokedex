@@ -16,7 +16,7 @@ const getPokemonsList = async (existingPokemonsIds = new Set()) => {
       }
     }
   } catch (error) {
-    return 'Oops! Ocorreu um erro ao buscar os pokemons 😥';
+    pokemonList.push('Oops! Ocorreu um erro ao buscar os pokemons 😥');
   }
 
   return pokemonList;

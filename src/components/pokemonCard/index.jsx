@@ -26,7 +26,7 @@ const PokemonCard = () => {
     fetchPokemons();
   }, [buttonClicked]);
 
-  if (pokemonList === 'Oops! Ocorreu um erro ao buscar os pokemons 😥') return <ErrorMessageParagraph theme={theme}>{pokemonList}</ErrorMessageParagraph>
+  if (pokemonList[0] === 'Oops! Ocorreu um erro ao buscar os pokemons 😥') return <ErrorMessageParagraph theme={theme}>{pokemonList[0]}</ErrorMessageParagraph>
 
   return (
     <PokedexContainer theme={theme}>

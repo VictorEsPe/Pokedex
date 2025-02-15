@@ -6,12 +6,12 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   FallbackMessage,
+  GoBackBtn,
   Container,
   StyledPokemonDescription,
   TypeItem,
   StyledLink,
 } from './StyledPokemonDetails';
-import { LoadMoreBtn } from '../pokemonCard/StyledPokemonCard';
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState(null);
@@ -60,17 +60,28 @@ const PokemonDetails = () => {
     pokemon ===
     'Oops! Houve um erro ao tentar buscar as informações deste pokemon 😥'
   )
-    return <FallbackMessage theme={theme}>{pokemon}</FallbackMessage>;
+    return (
+      <>
+        <StyledLink to="/">
+          <GoBackBtn theme={theme} className="link-btn">
+            Voltar
+          </GoBackBtn>
+        </StyledLink>
+        <FallbackMessage theme={theme}>{pokemon}</FallbackMessage>
+      </>
+    );
 
   if (abilityDescriptionList.length === 0)
-    return <FallbackMessage theme={theme}>Carregando Pokemon...</FallbackMessage>;
+    return (
+      <FallbackMessage theme={theme}>Carregando Pokemon...</FallbackMessage>
+    );
 
   return (
     <Container theme={theme}>
       <StyledLink to="/">
-        <LoadMoreBtn theme={theme} className="link-btn">
+        <GoBackBtn theme={theme} className="link-btn">
           Voltar
-        </LoadMoreBtn>
+        </GoBackBtn>
       </StyledLink>
 
       <StyledPokemonDescription>

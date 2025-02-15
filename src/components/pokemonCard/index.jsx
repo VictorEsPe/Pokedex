@@ -17,15 +17,16 @@ const PokemonCard = () => {
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      const response = await getPokemonsList();
+      const existingIds = new Set(pokemonList.map(pokemon => pokemon.id));
+      const newPokemons = await getPokemonsList(existingIds);
 
-      setPokemonList(pokemonList.concat(response));
+      setPokemonList([...pokemonList, ...newPokemons]);
     };
 
     fetchPokemons();
   }, [buttonClicked]);
 
-  if (pokemonList[0] === 'Oops! Ocorreu um erro ao buscar os pokemons 😥') return <ErrorMessageParagraph theme={theme}>{pokemonList[0]}</ErrorMessageParagraph>
+  if (pokemonList === 'Oops! Ocorreu um erro ao buscar os pokemons 😥') return <ErrorMessageParagraph theme={theme}>{pokemonList}</ErrorMessageParagraph>
 
   return (
     <PokedexContainer theme={theme}>

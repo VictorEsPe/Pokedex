@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const LoadingMessage = styled.div`
+const FallbackMessage = styled.p`
   text-align: center;
   padding: 50px;
   color: ${props => props.theme.textColor};
@@ -152,4 +152,4 @@ text-align: center;
 width: 100%;
 `;
 
-export { LoadingMessage, Container, StyledPokemonDescription, TypeItem, StyledLink };
+export { FallbackMessage, Container, StyledPokemonDescription, TypeItem, StyledLink };

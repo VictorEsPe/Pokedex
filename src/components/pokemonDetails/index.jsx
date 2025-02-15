@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 import { getPokemon } from '../../services/getPokemons';
 import { getAbilitiesDescription } from '../../services/getAbilitiesDescription';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
-  LoadingMessage,
+  FallbackMessage,
   Container,
   StyledPokemonDescription,
   TypeItem,
@@ -56,12 +56,14 @@ const PokemonDetails = () => {
     fetchAbilities();
   }, [pokemon]);
 
-  if (!pokemon || abilityDescriptionList.length === 0)
-    return (
-      <LoadingMessage theme={theme}>
-        <p className="loading-message">Carregando Pokemon...</p>
-      </LoadingMessage>
-    );
+  if (
+    pokemon ===
+    'Oops! Houve um erro ao tentar buscar as informações deste pokemon 😥'
+  )
+    return <FallbackMessage theme={theme}>{pokemon}</FallbackMessage>;
+
+  if (abilityDescriptionList.length === 0)
+    return <FallbackMessage theme={theme}>Carregando Pokemon...</FallbackMessage>;
 
   return (
     <Container theme={theme}>

@@ -57,8 +57,7 @@ const PokemonDetails = () => {
   }, [pokemon]);
 
   if (
-    pokemon ===
-    'Oops! Houve um erro ao tentar buscar as informações deste pokemon 😥'
+    pokemon === 'Oops! Houve um erro ao tentar buscar as informações deste pokemon 😥'
   )
     return (
       <>

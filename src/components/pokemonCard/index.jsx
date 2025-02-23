@@ -8,32 +8,56 @@ import {
   LoadMoreBtn,
 } from './StyledPokemonCard';
 import { Link } from 'react-router-dom';
+import { TypeFilter } from '../typeFIlter';
 
 const PokemonCard = () => {
   const [pokemonList, setPokemonList] = useState([]);
-  const [buttonClicked, setbuttonClicked] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const [selectedType, setSelectedType] = useState('all');
 
   const { theme } = useContext(ThemeContext);
 
+  
   useEffect(() => {
     const fetchPokemons = async () => {
       const existingIds = new Set(pokemonList.map(pokemon => pokemon.id));
-      const newPokemons = await getPokemonsList(existingIds);
-
+      const newPokemons = await getPokemonsList(existingIds, selectedType);
+  
       setPokemonList([...pokemonList, ...newPokemons]);
     };
 
-    fetchPokemons();
+    setButtonClicked(false);
+    // fetchPokemons();
   }, [buttonClicked]);
 
-  if (pokemonList[0] === 'Oops! Ocorreu um erro ao buscar os pokemons 😥') return <ErrorMessageParagraph theme={theme}>{pokemonList[0]}</ErrorMessageParagraph>
+  useEffect(() => {
+    const fetchPokemonsByType = async () => {
+      const existingIds = new Set(pokemonList.map(pokemon => pokemon.id));
+      const newPokemons = await getPokemonsList(existingIds, selectedType);
+
+      setPokemonList([...newPokemons]);
+    };
+    
+    // fetchPokemonsByType();
+  }, [selectedType]);
+
+  if (pokemonList[0] === 'Oops! Ocorreu um erro ao buscar os pokemons 😥')
+    return (
+      <ErrorMessageParagraph theme={theme}>
+        {pokemonList[0]}
+      </ErrorMessageParagraph>
+    );
 
   return (
     <PokedexContainer theme={theme}>
+      <TypeFilter
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+      />
+      
       {pokemonList.length === 0 && (
         <p className="loading-message">Carregando pokemons...</p>
       )}
-
 
       <PokemonCardContainer>
         {pokemonList.map(pokemon => (
@@ -50,10 +74,11 @@ const PokemonCard = () => {
       </PokemonCardContainer>
 
       <LoadMoreBtn
-        onClick={() => {
-          setbuttonClicked(true);
-          pokemonList.length === 20 && alert('Limite de busca atingido');
-        }}
+        onClick={() =>
+          pokemonList.length === 20
+            ? alert('Limite de busca atingido')
+            : setButtonClicked(true)
+        }
         className="load-more-btn"
         theme={theme}
       >

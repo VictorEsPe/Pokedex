@@ -5,7 +5,7 @@ const ErrorMessageParagraph = styled.p`
   color: ${props => props.theme.textColor};
   text-align: center;
   margin-top: 30px;
-`
+`;
 
 const PokedexContainer = styled.section`
   display: flex;
@@ -66,7 +66,7 @@ const LoadMoreBtn = styled(Button)`
   }
   
   &:hover {
-    background-color: ${props => props.theme.button.hover};;
+    background-color: ${props => props.theme.button.hover};
     box-shadow: inset 4px 4px 5px rgba(2, 2, 2, 0.842);
   }
   `

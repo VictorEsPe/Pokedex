@@ -1,8 +1,10 @@
 import { SelectContainer } from "./StyledTypeFilter";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons/faFilter";
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme-context';
 
 const TypeFilter = ({selectedType, setSelectedType}) => {
+   const { theme } = useContext(ThemeContext);
+
   const pokemonTypes = [
     "normal", "fire", "water", "electric", "grass", "ice",
     "fighting", "poison", "ground", "flying", "psychic", "bug",
@@ -14,11 +16,11 @@ const TypeFilter = ({selectedType, setSelectedType}) => {
   }
   
   return (
-    <SelectContainer>
-      <label htmlFor="select-type"><FontAwesomeIcon icon={faFilter} /></label>
+    <SelectContainer theme={theme}>
+      <label htmlFor="select-type">Searching for the type: </label>
 
       <select name="select-type" id="select-type" onChange={handleOptionChange} value={selectedType}>
-        <option value="all">All</option>
+        <option value="all">All types</option>
         {pokemonTypes.map((type, index) => (
           <option key={index} value={type}>{type}</option>
         ))}

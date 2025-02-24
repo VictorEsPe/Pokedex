@@ -17,17 +17,16 @@ const PokemonCard = () => {
 
   const { theme } = useContext(ThemeContext);
 
-  
   useEffect(() => {
     const fetchPokemons = async () => {
       const existingIds = new Set(pokemonList.map(pokemon => pokemon.id));
       const newPokemons = await getPokemonsList(existingIds, selectedType);
-  
+
       setPokemonList([...pokemonList, ...newPokemons]);
     };
 
     setButtonClicked(false);
-    // fetchPokemons();
+    fetchPokemons();
   }, [buttonClicked]);
 
   useEffect(() => {
@@ -37,8 +36,8 @@ const PokemonCard = () => {
 
       setPokemonList([...newPokemons]);
     };
-    
-    // fetchPokemonsByType();
+
+    fetchPokemonsByType();
   }, [selectedType]);
 
   if (pokemonList[0] === 'Oops! Ocorreu um erro ao buscar os pokemons 😥')
@@ -54,9 +53,9 @@ const PokemonCard = () => {
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
-      
+
       {pokemonList.length === 0 && (
-        <p className="loading-message">Carregando pokemons...</p>
+        <p className="loading-message">Loading pokemons...</p>
       )}
 
       <PokemonCardContainer>
@@ -82,7 +81,7 @@ const PokemonCard = () => {
         className="load-more-btn"
         theme={theme}
       >
-        Mostrar mais
+        Load more
       </LoadMoreBtn>
     </PokedexContainer>
   );

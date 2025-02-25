@@ -31,7 +31,7 @@ const getPokemonsList = async (
       }
     }
   } catch (error) {
-    pokemonList.push('Oops! Ocorreu um erro ao buscar os pokemons 😥');
+    pokemonList.push('Oops! An error occurred while fetching pokemons 😥');
   }
   
   return pokemonList;
@@ -44,7 +44,7 @@ const getPokemon = async id => {
 
     return data;
   } catch (error) {
-    return 'Oops! Houve um erro ao tentar buscar as informações deste pokemon 😥';
+    return 'Oops! An error occurred while fetching this pokemon`s informations 😥';
   }
 };
 

@@ -1,4 +1,4 @@
-import { SelectContainer } from "./StyledTypeFilter";
+import { StyledSelect } from "./StyledTypeFilter";
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 
@@ -16,7 +16,7 @@ const TypeFilter = ({selectedType, setSelectedType}) => {
   }
   
   return (
-    <SelectContainer theme={theme}>
+    <StyledSelect theme={theme}>
       <label htmlFor="select-type">Searching for the type: </label>
 
       <select name="select-type" id="select-type" onChange={handleOptionChange} value={selectedType}>
@@ -25,7 +25,7 @@ const TypeFilter = ({selectedType, setSelectedType}) => {
           <option key={index} value={type}>{type}</option>
         ))}
       </select>
-    </SelectContainer>
+    </StyledSelect>
   )
 }
 

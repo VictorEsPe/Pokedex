@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SelectContainer = styled.div`
+const StyledSelect = styled.div`
   display: flex;
   gap: 5px;
   align-items: center;
@@ -42,4 +42,4 @@ const SelectContainer = styled.div`
   }
 `;
 
-export { SelectContainer };
+export { StyledSelect };

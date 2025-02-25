@@ -2,10 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 import { getPokemonsList } from '../../services/getPokemons';
 import {
-  ErrorMessageParagraph,
-  PokedexContainer,
-  PokemonCardContainer,
-  LoadMoreBtn,
+  StyledErrorMessageParagraph,
+  StyledPokedexContainer,
+  StyledPokemonCardContainer,
+  StyledLoadMoreBtn,
 } from './StyledPokemonCard';
 import { Link } from 'react-router-dom';
 import { TypeFilter } from '../typeFIlter';
@@ -40,15 +40,15 @@ const PokemonCard = () => {
     fetchPokemonsByType();
   }, [selectedType]);
 
-  if (pokemonList[0] === 'Oops! Ocorreu um erro ao buscar os pokemons 😥')
+  if (pokemonList[0] === 'Oops! An error occurred while fetching pokemons 😥')
     return (
-      <ErrorMessageParagraph theme={theme}>
+      <StyledErrorMessageParagraph theme={theme}>
         {pokemonList[0]}
-      </ErrorMessageParagraph>
+      </StyledErrorMessageParagraph>
     );
 
   return (
-    <PokedexContainer theme={theme}>
+    <StyledPokedexContainer theme={theme}>
       <TypeFilter
         selectedType={selectedType}
         setSelectedType={setSelectedType}
@@ -58,7 +58,7 @@ const PokemonCard = () => {
         <p className="loading-message">Loading pokemons...</p>
       )}
 
-      <PokemonCardContainer>
+      <StyledPokemonCardContainer>
         {pokemonList.map(pokemon => (
           <Link to={`/pokemon/${pokemon.id}`} key={pokemon.id}>
             <div className="pokemon-card">
@@ -70,9 +70,9 @@ const PokemonCard = () => {
             </div>
           </Link>
         ))}
-      </PokemonCardContainer>
+      </StyledPokemonCardContainer>
 
-      <LoadMoreBtn
+      <StyledLoadMoreBtn
         onClick={() =>
           pokemonList.length === 20
             ? alert('Limite de busca atingido')
@@ -82,8 +82,8 @@ const PokemonCard = () => {
         theme={theme}
       >
         Load more
-      </LoadMoreBtn>
-    </PokedexContainer>
+      </StyledLoadMoreBtn>
+    </StyledPokedexContainer>
   );
 };
 

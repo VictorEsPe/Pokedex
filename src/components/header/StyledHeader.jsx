@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
   color: ${props => props.theme.textColor};
 `;
 
-const Logo = styled.div`
+const StyledLogo = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -30,7 +30,7 @@ const Logo = styled.div`
   }
 `;
 
-const ThemeTogglerBtn = styled(Button)`
+const StyledThemeTogglerBtn = styled(Button)`
   font-size: 25px;
   transition: all 0.2s ease-in-out;
   color: inherit;
@@ -41,4 +41,4 @@ const ThemeTogglerBtn = styled(Button)`
   }
 `;
 
-export { StyledHeader, Logo, ThemeTogglerBtn };
+export { StyledHeader, StyledLogo, StyledThemeTogglerBtn };

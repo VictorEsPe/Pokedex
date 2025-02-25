@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button } from '../button';
 
-const ErrorMessageParagraph = styled.p`
+const StyledErrorMessageParagraph = styled.p`
   color: ${props => props.theme.textColor};
   text-align: center;
   font-family: 'VT323', sans-serif;
@@ -9,7 +9,7 @@ const ErrorMessageParagraph = styled.p`
   font-size: 25px;
 `;
 
-const PokedexContainer = styled.section`
+const StyledPokedexContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@ const PokedexContainer = styled.section`
   }
 `;
 
-const PokemonCardContainer = styled.div`
+const StyledPokemonCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -59,7 +59,7 @@ const PokemonCardContainer = styled.div`
   }
 `;
 
-const LoadMoreBtn = styled(Button)`
+const StyledLoadMoreBtn = styled(Button)`
   padding: 15px 40px;
   box-shadow: 2px 2px 7px rgba(2, 2, 2, 0.514);
   font-size: 24px;
@@ -80,8 +80,8 @@ const LoadMoreBtn = styled(Button)`
 `;
 
 export {
-  ErrorMessageParagraph,
-  PokedexContainer,
-  PokemonCardContainer,
-  LoadMoreBtn,
+  StyledErrorMessageParagraph,
+  StyledPokedexContainer,
+  StyledPokemonCardContainer,
+  StyledLoadMoreBtn,
 };

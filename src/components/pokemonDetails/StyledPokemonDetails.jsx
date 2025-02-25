@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { LoadMoreBtn } from '../pokemonCard/StyledPokemonCard';
+import { StyledLoadMoreBtn } from '../pokemonCard/StyledPokemonCard';
 
-const FallbackMessage = styled.p`
+const StyledFallbackMessage = styled.p`
   text-align: center;
   padding: 30px;
   color: ${props => props.theme.textColor};
 `;
-const GoBackBtn = styled(LoadMoreBtn)`
+const StyledGoBackBtn = styled(StyledLoadMoreBtn)`
   margin-top: 30px;
   align-self: center;
 `;
 
-const Container = styled.section`
+const StyledContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +101,7 @@ const StyledPokemonDescription = styled.div`
   }
 `;
 
-const TypeItem = styled.li`
+const StyledTypeItem = styled.li`
   padding: 8px 16px;
   border-radius: 8px;
   display: flex;
@@ -157,10 +157,10 @@ const StyledLink = styled(Link)`
 `;
 
 export {
-  FallbackMessage,
-  GoBackBtn,
-  Container,
+  StyledFallbackMessage,
+  StyledGoBackBtn,
+  StyledContainer,
   StyledPokemonDescription,
-  TypeItem,
+  StyledTypeItem,
   StyledLink,
 };

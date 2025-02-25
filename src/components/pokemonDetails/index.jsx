@@ -5,11 +5,11 @@ import { getAbilitiesDescription } from '../../services/getAbilitiesDescription'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
-  FallbackMessage,
-  GoBackBtn,
-  Container,
+  StyledFallbackMessage,
+  StyledGoBackBtn,
+  StyledContainer,
   StyledPokemonDescription,
-  TypeItem,
+  StyledTypeItem,
   StyledLink,
 } from './StyledPokemonDetails';
 
@@ -46,7 +46,7 @@ const PokemonDetails = () => {
           );
           abilityList.push(englishDescription.effect);
         } catch (error) {
-          abilityList.push('Erro ao carregar descrição.');
+          abilityList.push('An error occured while loading the description.');
         }
       }
 
@@ -57,30 +57,30 @@ const PokemonDetails = () => {
   }, [pokemon]);
 
   if (
-    pokemon === 'Oops! Houve um erro ao tentar buscar as informações deste pokemon 😥'
+    pokemon === 'Oops! An error occurred while fetching this pokemon`s informations 😥'
   )
     return (
       <>
         <StyledLink to="/">
-          <GoBackBtn theme={theme} className="link-btn">
-            Voltar
-          </GoBackBtn>
+          <StyledGoBackBtn theme={theme} className="link-btn">
+            Return
+          </StyledGoBackBtn>
         </StyledLink>
-        <FallbackMessage theme={theme}>{pokemon}</FallbackMessage>
+        <StyledFallbackMessage theme={theme}>{pokemon}</StyledFallbackMessage>
       </>
     );
 
   if (abilityDescriptionList.length === 0)
     return (
-      <FallbackMessage theme={theme}>Carregando Pokemon...</FallbackMessage>
+      <StyledFallbackMessage theme={theme}>Loading Pokemon...</StyledFallbackMessage>
     );
 
   return (
-    <Container theme={theme}>
+    <StyledContainer theme={theme}>
       <StyledLink to="/">
-        <GoBackBtn theme={theme} className="link-btn">
-          Voltar
-        </GoBackBtn>
+        <StyledGoBackBtn theme={theme} className="link-btn">
+          Return
+        </StyledGoBackBtn>
       </StyledLink>
 
       <StyledPokemonDescription>
@@ -95,9 +95,9 @@ const PokemonDetails = () => {
 
         <ul className="type-list">
           {pokemon.types.map((typeObj, index) => (
-            <TypeItem key={index} className={typeObj.type.name}>
+            <StyledTypeItem key={index} className={typeObj.type.name}>
               {typeObj.type.name}
-            </TypeItem>
+            </StyledTypeItem>
           ))}
         </ul>
 
@@ -121,7 +121,7 @@ const PokemonDetails = () => {
           </ul>
         </div>
       </StyledPokemonDescription>
-    </Container>
+    </StyledContainer>
   );
 };
 

@@ -1,42 +1,3 @@
-const getPokemonsList = async (
-  existingPokemonsIds = new Set(),
-  selectedType
-) => {
-  const pokemonList = [];
-
-  try {
-    while (pokemonList.length < 10) {
-
-      const pokemonId = Math.floor(Math.random() * 1000) + 1;
-
-      if(!existingPokemonsIds.has(pokemonId)) {
-        const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-        );
-        const data = await response.json();
-    
-        if (selectedType !== 'all') {
-          const typeMatches = data.types.some(
-            typeObj => typeObj.type.name === selectedType
-          );
-    
-          if (typeMatches) {
-            pokemonList.push(data);
-            existingPokemonsIds.add(data.id);
-          }
-        } else {
-          pokemonList.push(data);
-          existingPokemonsIds.add(data.id);
-        }
-      }
-    }
-  } catch (error) {
-    pokemonList.push('Oops! An error occurred while fetching pokemons 😥');
-  }
-  
-  return pokemonList;
-};
-
 const getPokemon = async id => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -48,4 +9,4 @@ const getPokemon = async id => {
   }
 };
 
-export { getPokemonsList, getPokemon };
+export { getPokemon };

@@ -5,8 +5,8 @@ const StyledSelect = styled.div`
   gap: 5px;
   align-items: center;
   justify-content: flex-end;
-  font-family: 'VT323', sans-serif;
-  font-size: 24px;
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-size: 18px;
   width: 100vw;
   padding-right: 40px;
 
@@ -22,8 +22,8 @@ const StyledSelect = styled.div`
     border: 1px solid lightgray;
     background-color: transparent;
     color: inherit;
-    font-family: 'VT323', sans-serif;
-    font-size: 20px;
+    font-family: 'IBM Plex Mono', sans-serif;
+    font-size: 15px;
     text-align: center;
     padding: 3px;
 
@@ -37,7 +37,7 @@ const StyledSelect = styled.div`
 
     & option {
       background-color: ${props => props.theme.bgColor};
-      font-size: 18px;
+      font-size: inherit;
     }
   }
 `;

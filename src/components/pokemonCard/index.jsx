@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
-import { getPokemonsList } from '../../services/getPokemons';
+import { getPokemonsList } from '../../services/getPokemonList';
 import {
   StyledErrorMessageParagraph,
   StyledPokedexContainer,
@@ -37,6 +37,7 @@ const PokemonCard = () => {
       setPokemonList([...newPokemons]);
     };
 
+    setPokemonList([])
     fetchPokemonsByType();
   }, [selectedType]);
 

@@ -1,7 +1,4 @@
-const getPokemonsList = async (
-  existingPokemonsIds = new Set(),
-  selectedType
-) => {
+const getPokemonsList = async (existingPokemonsIds, selectedType) => {
   const pokemonList = [];
 
   try {
@@ -26,7 +23,6 @@ const getPokemonsList = async (
     }
   } catch (error) {
     pokemonList.push('Oops! An error occurred while fetching pokemons 😥');
-    console.error(error)
   }
 
   return pokemonList;

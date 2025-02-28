@@ -44,6 +44,7 @@ const PokemonDetails = () => {
           const englishDescription = response.effect_entries.find(
             entry => entry.language.name === 'en'
           );
+
           abilityList.push(englishDescription.effect);
         } catch (error) {
           abilityList.push('An error occured while loading the description.');
@@ -57,7 +58,8 @@ const PokemonDetails = () => {
   }, [pokemon]);
 
   if (
-    pokemon === 'Oops! An error occurred while fetching this pokemon`s informations 😥'
+    pokemon ===
+    'Oops! An error occurred while fetching this pokemon`s informations 😥'
   )
     return (
       <>
@@ -72,7 +74,9 @@ const PokemonDetails = () => {
 
   if (abilityDescriptionList.length === 0)
     return (
-      <StyledFallbackMessage theme={theme}>Loading Pokemon...</StyledFallbackMessage>
+      <StyledFallbackMessage theme={theme}>
+        Loading Pokemon...
+      </StyledFallbackMessage>
     );
 
   return (

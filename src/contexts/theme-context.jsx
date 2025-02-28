@@ -1,4 +1,3 @@
-import { text } from '@fortawesome/fontawesome-svg-core';
 import { createContext, useState } from 'react';
 
 const themes = {

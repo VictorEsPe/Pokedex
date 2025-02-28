@@ -6,6 +6,8 @@ const StyledFallbackMessage = styled.p`
   text-align: center;
   padding: 30px;
   color: ${props => props.theme.textColor};
+  font-family: 'VT323', sans-serif;
+  font-size: 25px;
 `;
 const StyledGoBackBtn = styled(StyledLoadMoreBtn)`
   margin-top: 30px;

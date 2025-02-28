@@ -26,6 +26,7 @@ const StyledSelect = styled.div`
     font-size: 15px;
     text-align: center;
     padding: 3px;
+    cursor: pointer;
 
     @media (max-width: 600px) {
       width: 100%;

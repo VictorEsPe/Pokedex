@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Roboto', sans-serif;
-    padding-top: ${props => props.marginTop}px;
+    padding-block: 60px;
     background-color: ${props => props.theme.bgColor};
 
     &::-webkit-scrollbar {

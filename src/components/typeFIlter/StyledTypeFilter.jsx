@@ -15,7 +15,7 @@ const StyledSelect = styled.div`
     width: 100%;
     align-items: center;
     padding-right: 0;
-    font-size: 21px;
+    font-size: 15px;
   }
 
   & select {

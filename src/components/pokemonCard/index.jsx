@@ -42,10 +42,6 @@ const PokemonCard = () => {
     fetchPokemonsByType();
   }, [selectedType]);
 
-  function handleLoadMoreClicked() {
-    pokemonList.length === 20 ? alert('Limite de busca atingido') : setButtonClicked(true);
-  }
-
   if (pokemonList[0] === 'Oops! An error occurred while fetching pokemons 😥')
     return (
       <StyledErrorMessageParagraph theme={theme}>
@@ -79,7 +75,7 @@ const PokemonCard = () => {
       </StyledPokemonCardContainer>
 
       <StyledLoadMoreBtn
-        onClick={handleLoadMoreClicked}
+        onClick={() => setButtonClicked(true)}
         className="load-more-btn"
         theme={theme}
       >

@@ -2,14 +2,14 @@
 Este projeto tem o intuito de fornecer aos fãs de Pokémon informações sobre essas fascinantes criaturas de forma simples e intuitiva.<br>
 A aplicação fornecerá, de forma aleatória, dez Pokémon. Caso algum chame sua atenção, você poderá selecioná-lo para descobrir mais informações sobre ele.
 ### Home  
-![Home](./src/preview/home-desktop.png)
+![Home](./src/assets/preview/home-desktop.png)
 ### Informações sobre o pokemon
-![Home](./src/preview/details-desktop.png)
+![Home](./src/assets/preview/details-desktop.png)
 
 Caso não esteja satisfeito com a seleção inicial, basta clicar no botão "Load more" para carregar mais dez Pokémon.
 ## Modo escuro
 Você também pode alternar o esquema de cores da página com o botão no cabeçalho, caso sua visão esteja cansada.
-![Modo escuro](./src/preview/dark-mode-home.png)
+![Modo escuro](./src/assets/preview/dark-mode-home.png)
 
 ## Processo de criação
 Como eu não tinha um layout modelo específico para me basear, comecei pensando em como seria o design da interface. Para isso, usei como inspiração tanto o design da interface dos jogos de Pokémon do Game Boy quanto os cards colecionáveis de Pokémon (que me inspiraram a colocar as informações em containers em forma de carta). Para reforçar essa estética de jogo antigo, quis utilizar fontes pixelizadas (fonte: VT323) para os textos. Porém, isso prejudicou a legibilidade dos textos mais longos, tornando-os difíceis de ler. Por isso, utilizei a fonte pixelizada apenas para destacar títulos e escolhi uma fonte mais legível, mas que ainda remetesse à estética de um jogo, para os textos mais longos (fonte: IBM Plex Mono).<br>

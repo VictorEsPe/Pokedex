@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Header } from './components/header/';
-import { AppRoutes } from './pages/routes';
+import { AppRoutes } from './routes';
 import { ThemeContext } from './contexts/theme-context';
 import { GlobalStyles } from './GlobalStyles';
 

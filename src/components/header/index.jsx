@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <StyledHeader theme={theme}>
       <StyledLogo>
-        <img src="/Poké_Ball_icon.png" alt="Pokebola" />
+        <img src="../../assets/Poké_Ball_icon.png" alt="Pokebola" />
         <h1>Pokédex</h1>
       </StyledLogo>
 

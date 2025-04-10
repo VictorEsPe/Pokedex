@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
-import { getPokemon } from '../../services/getPokemons';
+import { getPokemon } from '../../services/getPokemon';
 import { getAbilitiesDescription } from '../../services/getAbilitiesDescription';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';

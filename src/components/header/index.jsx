@@ -1,19 +1,13 @@
 import React, { useContext } from 'react';
-import { ThemeContext, themes } from '../../contexts/theme-context';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { ThemeContext } from '../../contexts/theme-context';
 import {
   StyledHeader,
   StyledLogo,
-  StyledThemeTogglerBtn,
 } from './StyledHeader';
+import { ThemeTogglerButton } from '../themeTogglerButton';
 
 const Header = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
-
-  function handleSetTheme() {
-    setTheme(theme === themes.light ? themes.dark : themes.light);
-  }
+  const { theme } = useContext(ThemeContext);
 
   return (
     <StyledHeader theme={theme}>
@@ -22,12 +16,8 @@ const Header = () => {
         <h1>Pokédex</h1>
       </StyledLogo>
 
-      <StyledThemeTogglerBtn
-        className="theme-toggler-btn"
-        onClick={handleSetTheme}
-      >
-        <FontAwesomeIcon icon={faCircleHalfStroke} />
-      </StyledThemeTogglerBtn>
+      <ThemeTogglerButton />
+
     </StyledHeader>
   );
 };

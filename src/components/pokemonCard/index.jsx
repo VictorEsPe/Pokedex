@@ -8,7 +8,7 @@ import {
   StyledLoadMoreBtn,
 } from './StyledPokemonCard';
 import { Link } from 'react-router-dom';
-import { TypeFilter } from '../typeFIlter';
+import { TypeFilter } from '../typeFilterInput';
 
 const PokemonCard = () => {
   const [pokemonList, setPokemonList] = useState([]);

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PokemonCardPage } from '../pages/Home/PokemonCardPage';
-import { PokemonDetailsPage } from '../pages/pokemoDetailsPage/PokemonDetailsPage';
+import { PokemonDetailsPage } from '../pages/pokemoDetailsPage'
 
 const AppRoutes = () => {
   return (

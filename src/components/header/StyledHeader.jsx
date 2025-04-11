@@ -18,11 +18,6 @@ const StyledLogo = styled.div`
   align-items: center;
   gap: 5px;
 
-  & img {
-    width: 35px;
-    height: 35px;
-  }
-
   & h1 {
     font-family: 'VT323', sans-serif;
     font-size: 40px;
